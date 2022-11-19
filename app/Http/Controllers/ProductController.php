@@ -67,7 +67,7 @@ class ProductController extends Controller
             Storage::delete($product->imagen_producto);
           }
         
-          $product->imagen_producto = Storage::putFile('storage/img', $request->file('imagen_producto'));
+          $product->imagen_producto = Storage::putFile('storage', $request->file('imagen_producto'));
       }
         //$file = $request->image->store('public/product');
         //$file = $request->file('imagen_producto')->store('public/img');
