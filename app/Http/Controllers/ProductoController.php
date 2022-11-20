@@ -35,7 +35,7 @@ class ProductoController extends Controller
         $product -> fecha_ven_producto= $request -> fecha_ven_producto;
         $product -> estado_producto = $request -> estado_producto;
         $product -> categoria_id = $request -> categoria_id;
-        $file = $request->image->store('');
+        $file = $request->image->store('public/img');
         $file = $request->file('imagen_producto')->store('public/img');
         $$product->imagen_producto = $file;
         $product -> save();
