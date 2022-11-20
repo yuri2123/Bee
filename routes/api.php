@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductoController;
 use App\Models\Order_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,11 +39,11 @@ Route::delete('/category/{Category}',[CategoryController::class,'destroy']);
 
 
 //ruta de productos
-Route::apiResource('/product', ProductController::class);
+Route::apiResource('/product', ProductoController::class);
 //Route::put('/product',[ProductController::class,'update']);
-Route::put('product/{Product}',[ProductController::class,'update']);
+Route::put('product/{Product}',[ProductoController::class,'update']);
 
-Route::delete('product/{Product}',[ProductController::class,'destroy']);
+Route::delete('product/{Product}',[ProductoController::class,'destroy']);
 
 
 ///ruta de order
