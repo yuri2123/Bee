@@ -41,7 +41,7 @@ Route::delete('/category/{Category}',[CategoryController::class,'destroy']);
 //ruta de productos
 Route::apiResource('/product', ProductController::class);
 //Route::put('/product',[ProductController::class,'update']);
-Route::put('product/{Product}',[ProductoController::class,'update']);
+Route::put('product/{Product}',[ProductController::class,'update']);
 
 Route::delete('product/{Product}',[ProductoController::class,'destroy']);
 
