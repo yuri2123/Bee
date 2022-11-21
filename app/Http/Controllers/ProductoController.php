@@ -37,7 +37,7 @@ class ProductoController extends Controller
         $product -> categoria_id = $request -> categoria_id;
         //$file = $request->image->store('public/img');
         $file = $request->file('imagen_producto')->store('public/img');
-        $$product->imagen_producto = $file;
+        $product->imagen_producto = $file;
         $product -> save();
 
         return response()->json([
