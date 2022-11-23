@@ -120,8 +120,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        return $request;
         $product = Product::find($id);
         $product -> nombre_producto = $request -> nombre_producto;
         $product -> descripcion_producto = $request -> descripcion_producto;
