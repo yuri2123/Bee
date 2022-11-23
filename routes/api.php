@@ -3,9 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductoController;
-use App\Models\Order_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +52,7 @@ Route::apiResource('/order',OrderController::class);
 
 //ruta order detail
 
-Route::apiResource('/order_detail',Order_detail::class);
+Route::apiResource('/order_detail',OrderDetailController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
