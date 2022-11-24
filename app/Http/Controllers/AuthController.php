@@ -84,10 +84,12 @@ public function logout(Request $request){
 }
 
 public function userProfile($id){
+$user = User::find($id);
+
     return response()->json([
       'info'=> 0,
       'message'=> 'Perfil de usuario',
-      'datos'=> $id
+      'datos'=> $user
 ]);
   }
 
