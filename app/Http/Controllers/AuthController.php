@@ -83,11 +83,11 @@ public function logout(Request $request){
     ],400);
 }
 
-public function userProfile(){
+public function userProfile($id){
     return response()->json([
       'info'=> 0,
       'message'=> 'Perfil de usuario',
-      'datos'=> auth()->user()
+      'datos'=> $id
 ]);
   }
 
