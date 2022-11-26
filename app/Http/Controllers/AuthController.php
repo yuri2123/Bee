@@ -91,6 +91,9 @@ $user = User::find($id);
       'message'=> 'Perfil de usuario',
       'datos'=> $user
 ],200);
+
   }
 
+
 }
+
