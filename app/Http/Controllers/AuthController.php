@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 
+       //////  LISTA TODOS LOS USUARIOS    ///////
+
     public function index(){
         $users = User::all();
         return response()->json([
@@ -22,13 +24,28 @@ class AuthController extends Controller
         
         ],200);
         }
+
+  //////  LISTA POR PERFIL DE USUARIO    ///////
+
+  public function userProfile($id){
+    $user = User::find($id);
     
+        return response()->json([
+          'info'=> 0,
+          'message'=> 'Perfil de usuario',
+          'datos'=> $user
+    ],200);
+    
+      }
+
+
+    
+  //////  REGISTRO DE USUARIOS   ///////
+
     public function register(RegisterRequest $request){
         $user = new User();
-        $user-> name = $request ->  name;
-        $user-> last_name = $request -> last_name;
+        $user-> full_name = $request ->  full_name;
         $user-> email = $request ->  email;
-        $user-> direccion = $request -> direccion;
         $user-> telefono = $request -> telefono;
         $user-> password =Hash::make($request->password);
         //$user-> password_confirmation = Hash::make($request -> password_confirmation);
@@ -43,6 +60,8 @@ class AuthController extends Controller
         }
     }
 
+
+      //////  INICIO DE SESION    ///////
 
     public function login(Request $request){
         $request->validate([
@@ -63,7 +82,7 @@ class AuthController extends Controller
             //verifico si el usuario tiene un token  creado, si es asi procedo a eliminar 
             //procedo a crear un nuevo token 
         
-            $userToken = Token::where('name', $request-> email)->first();
+            $userToken = Token::where('full_name', $request-> email)->first();
             if ($userToken){
                 $userToken->delete();
             }
@@ -75,6 +94,8 @@ class AuthController extends Controller
             ], 200);
 }
 
+  //////  CIERRE DE SESION   ///////
+
 public function logout(Request $request){
     $request-> user()->currentAccessToken()->delete();
 
@@ -83,16 +104,6 @@ public function logout(Request $request){
     ],400);
 }
 
-public function userProfile($id){
-$user = User::find($id);
-
-    return response()->json([
-      'info'=> 0,
-      'message'=> 'Perfil de usuario',
-      'datos'=> $user
-],200);
-
-  }
 
 
 }
