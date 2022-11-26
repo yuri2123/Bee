@@ -26,9 +26,7 @@ class RegisterRequest extends FormRequest
         return [
              //crear las reglas de validación
              'name' => 'required|max:20',
-             'last_name' => 'required',
              'email' => 'required|email|unique:users',
-             'direccion' => 'required',
              'telefono' => 'required',
              'password' => 'required|confirmed',
         ];
