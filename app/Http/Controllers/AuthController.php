@@ -82,7 +82,7 @@ class AuthController extends Controller
             //verifico si el usuario tiene un token  creado, si es asi procedo a eliminar 
             //procedo a crear un nuevo token 
         
-            $userToken = Token::where('full_name', $request-> email)->first();
+            $userToken = Token::where('name', $request-> email)->first();
             if ($userToken){
                 $userToken->delete();
             }
