@@ -15,8 +15,8 @@ class AuthController extends Controller
 
        //////  LISTA TODOS LOS USUARIOS    ///////
 
-    public function index($id){
-        $users = User::find($id);
+    public function index(){
+        $users = User::all();
         return response()->json([
           'message' => 'success',
           'info' => 'Lista de usuarios',
