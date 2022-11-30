@@ -64,9 +64,9 @@ class ProductController extends Controller
         
           $product->imagen_producto = Storage::putFile('storage', $request->file('imagen_producto'));
       }*/
-        $file = $request->image->store('public/product');
-        $file = $request->file('imagen_producto')->store('public/img');
-        $product->imagen_producto = $file;
+        $imagen_producto = $request->file('imagen_producto');
+        $imagen_producto->move('img', $imagen_producto->getClientOriginalName());
+        $product->imagen_producto = $imagen_producto->getClientOriginalName();
         $product -> save();
 
         return response()->json([
