@@ -13,13 +13,9 @@ class Product extends Model
 
        //llama los campos de la tabla
        protected $fillable =[
-        "nombre_produucto" ,
+        "nombre_producto" ,
         "descripcion_prod",
-        //"imagen_producto",
-        "cantidad_producto",
-        "fecha_producto",
-        "precio",
-        "fecha_ven_producto",
-        "estado_producto"
+        "imagen_producto",
+        "precio"
      ];
 }

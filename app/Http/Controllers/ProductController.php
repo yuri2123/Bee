@@ -49,14 +49,9 @@ class ProductController extends Controller
         $product = new Product() ;
         $product -> nombre_producto = $request -> nombre_producto;
         $product -> descripcion_producto = $request -> descripcion_producto;
-        $product -> cantidad_producto = $request -> cantidad_producto;
-        $product -> fecha_producto = $request -> fecha_producto;
         $product -> precio = $request -> precio;
-        $product -> fecha_ven_producto= $request -> fecha_ven_producto;
-        $product -> estado_producto = $request -> estado_producto;
-        $product -> categoria_id = $request -> categoria_id;
 
-      if($request-> hasFile('imagen_producto')){
+      /*if($request-> hasFile('imagen_producto')){
 
         //aqui se comprueba qque exista la imagen anterior 
 
@@ -68,10 +63,10 @@ class ProductController extends Controller
           }
         
           $product->imagen_producto = Storage::putFile('storage', $request->file('imagen_producto'));
-      }
-        //$file = $request->image->store('public/product');
-        //$file = $request->file('imagen_producto')->store('public/img');
-        //$product->imagen_producto = $file;
+      }*/
+        $file = $request->image->store('public/product');
+        $file = $request->file('imagen_producto')->store('public/img');
+        $product->imagen_producto = $file;
         $product -> save();
 
         return response()->json([
@@ -123,12 +118,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product -> nombre_producto = $request -> nombre_producto;
         $product -> descripcion_producto = $request -> descripcion_producto;
-        $product -> cantidad_producto = $request -> cantidad_producto;
-        $product -> fecha_producto = $request -> fecha_producto;
         $product -> precio = $request -> precio;
-        $product -> fecha_ven_producto= $request -> fecha_ven_producto;
-        $product -> estado_producto = $request -> estado_producto;
-        $product -> categoria_id = $request -> categoria_id;
         
         if($request->hasFile('imagen_producto')){
             Storage::delete($product->imagen_producto);
