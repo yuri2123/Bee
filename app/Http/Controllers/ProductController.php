@@ -51,7 +51,15 @@ class ProductController extends Controller
         $product -> descripcion_producto = $request -> descripcion_producto;
         $product -> precio = $request -> precio;
 
-      if($request-> hasFile('imagen_producto')){
+        //1. llevar la foto como archivo
+        $fotografia = $request->file('imagen_producto');
+        // 2. mover la caarpeta img y getClientOriginal  solo paso el nombre de la foto         
+         $fotografia ->move('img', $fotografia->getClientOriginalName());
+                  
+         //3. guardo el nombre del archivo 
+        $product->imagen_producto = $fotografia-> getClientOriginalName();
+       
+    /*  if($request-> hasFile('imagen_producto')){
 
         //aqui se comprueba qque exista la imagen anterior 
 
@@ -63,7 +71,7 @@ class ProductController extends Controller
           }
         
           $product->imagen_producto = Storage::putFile('storage', $request->file('imagen_producto'));
-      }
+      }*/
         /*$imagen_producto = $request->file('imagen_producto');
         $imagen_producto->move('img', $imagen_producto->getClientOriginalName());
         $product->imagen_producto = $imagen_producto->getClientOriginalName();*/
